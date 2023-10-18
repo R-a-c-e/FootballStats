@@ -10,6 +10,11 @@ CREATE TABLE Play_Type (
 	pt_name CHAR(7)
 );
 
+CREATE TABLE Side (
+	s_id SERIAL PRIMARY KEY,
+	s_name CHAR(15)
+);
+
 CREATE TABLE Offensive_Plays (
 	op_id SERIAL PRIMARY KEY,
 	op_team_id INTEGER,
@@ -41,23 +46,23 @@ CREATE TABLE Offensive_Plays (
 );
 
 CREATE TABLE Defensive_Plays (
-	df_id SERIAL PRIMARY KEY,
-	df_team_id INTEGER,
-	df_year INTEGER,
-	df_playtype_id INTEGER,
-	df_att INTEGER,
-	df_cmp INTEGER,
-	df_yds INTEGER,
-	df_1st INTEGER,
-	df_td_allowed INTEGER,
-	df_sack INTEGER,
-	CHECK (df_att >= 0),
-	CHECK (df_cmp >= 0),
-	CHECK (df_yds >= 0),
-	CHECK (df_1st >= 0),
-	CHECK (df_td_allowed >= 0),
-	CHECK (df_sack >= 0),
-	CHECK (df_year >= 1970)
+	dp_id SERIAL PRIMARY KEY,
+	dp_team_id INTEGER,
+	dp_year INTEGER,
+	dp_playtype_id INTEGER,
+	dp_att INTEGER,
+	dp_cmp INTEGER,
+	dp_yds INTEGER,
+	dp_1st INTEGER,
+	dp_td_allowed INTEGER,
+	dp_sack INTEGER,
+	CHECK (dp_att >= 0),
+	CHECK (dp_cmp >= 0),
+	CHECK (dp_yds >= 0),
+	CHECK (dp_1st >= 0),
+	CHECK (dp_td_allowed >= 0),
+	CHECK (dp_sack >= 0),
+	CHECK (dp_year >= 1970)
 );
 
 CREATE TABLE Defense_Turnovers (
@@ -135,8 +140,7 @@ CREATE TABLE FG_Ranges (
 	fgr_range CHAR(5),
 	CHECK (fgr_start_range < fgr_end_range),
 	CHECK (fgr_start_range >= 0),
-	CHECK (fgr_end_range >= 0),
-	CHECK (fgr_range >= 0)
+	CHECK (fgr_end_range >= 0)
 );
 
 CREATE TABLE Kickoff (
@@ -224,23 +228,20 @@ CREATE TABLE Punt_Return (
 	pr_year INTEGER,
 	pr_ret INTEGER,
 	pr_yds INTEGER,
-	pr_pret_t INTEGER,
+	pr_td INTEGER,
 	pr_20_plus INTEGER,
 	pr_40_plus INTEGER,
+	pr_lng INTEGER,
 	pr_fc INTEGER,
 	pr_fum INTEGER,
 	CHECK (pr_ret >= 0),
 	CHECK (pr_yds >= 0),
-	CHECK (pr_pret_t >= 0),
+	CHECK (pr_td >= 0),
 	CHECK (pr_20_plus >= 0),
 	CHECK (pr_40_plus >= 0),
+	CHECK (pr_lng >= 0),
 	CHECK (pr_fc >= 0),
 	CHECK (pr_fum >= 0),
 	CHECK (pr_year >= 1970)
-);
-
-CREATE TABLE Side (
-	s_id SERIAL PRIMARY KEY,
-	s_name CHAR(15)
 );
 
