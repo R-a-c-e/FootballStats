@@ -5,6 +5,7 @@ export default defineNuxtPlugin(nuxtApp => {
         user: 'postgres',
         host: 'localhost',
         database: 'football_stats',
+        password: 'password',
         port: 5432
     })
 
