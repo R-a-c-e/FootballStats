@@ -2,9 +2,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
-		"@nuxtjs/tailwindcss"
-  ],
-  plugins: [
-    '~/plugins/db.js'
+    "@nuxtjs/tailwindcss"
   ]
 })

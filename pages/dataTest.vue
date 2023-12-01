@@ -9,20 +9,21 @@ import { Client } from 'pg';
 
 
 const client = new Client({
-    user: 'postgres',
+    user: 'peter',
     host: 'localhost',
-    database: 'football_stats',
+    database: 'peter',
     password: 'password',
     port: 5432
 });
 client.connect();
-let side = await client.query('SELECT * FROM side')
-let defense_turnovers = await client.query('SELECT * FROM defense_turnovers ')
-let teams = await client.query('SELECT * FROM team ')
+const queryString = "SELECT t.t_name AS team, off.op_year AS year, off.op_att AS attempts, off.op_cmp AS completions, off.op_yds AS yards, off.op_td AS touchdowns, off.op_int AS interceptions, off.op_1st AS firstdowns, off.op_20_plus AS twentyplus, off.op_40_plus AS fortyplus, off.op_lng AS longest, off.op_sack AS sacks FROM offensive_plays AS off JOIN team AS t ON off.op_team_id=t.t_id WHERE off.op_playtype_id=0 and off.op_year=2022";
+const testQuery = await client.query(queryString);
+console.log(testQuery.rows)
 await client.end()
 
 const attribute = 's_name'
 const attribute2 = 't_name'
+const teamLogo = 't_logo'
 
 /*async function runDynamicQuery(selectedYear) { 
 
@@ -35,11 +36,30 @@ const attribute2 = 't_name'
         <h1 class="text-2xl font-semibold">NFL Team Stats</h1>
       </header>
     <div>
-        <li v-for="(row, index) in side.rows" :key="index">
+        
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Year</th>
+                    <th>Passing Yards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="row in testQuery.rows">
+                    <td>{{ row.team }}</td>
+                    <td>{{ row.year }}</td>
+                    <td>{{ row.yards }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--li v-for="(row, index) in side.rows" :key="index">
             {{ row[attribute] }}
         </li>
         <li v-for="(row, index) in teams.rows" :key="index">
             {{ row[attribute2] }}
-        </li>
+            <img :src=row[teamLogo] contain height="50px" width="50px"/>
+        </li-->
     </div>
 </template>
