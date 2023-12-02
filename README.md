@@ -1,75 +1,98 @@
-# Nuxt 3 Minimal Starter
+# hey y'ALL
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+run this when you get it:
+### `npm install`
 
-## Setup
+use this to start it:
+### `npm start`
 
-Make sure to install the dependencies: Can be done directly in the vs code integrated terminal
+thanks for coming to my ted talk
 
-```bash
-# npm
-npm install
+## Below is what I did to create the project initially, no need to do this
 
-# pnpm
-pnpm install
+Create the project:
+### `npx create-react-app football-stats`
 
-# yarn
-yarn install
+Added pg, express, and concurrently modules:
+### `npm install pg express concurrently`
 
-# bun
-bun install
+I then added this to the package.json file, so that both the server and client run when using `npm start`:
+```js
+"scripts": {
+	"start": "concurrently \"npm run server\" \"npm run client\"",
+	"server": "node server.js",
+	"client": "react-scripts start",
+	...
+}
 ```
 
-## Development Server
+# Getting Started with Create React App
 
-Start the development server on `http://localhost:3000`: we are using yarn!
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-```bash
-# npm
-npm run dev
+## Available Scripts
 
-# pnpm
-pnpm run dev
+In the project directory, you can run:
 
-# yarn
-yarn dev
+### `npm start`
 
-# bun
-bun run dev
-```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Production
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Build the application for production:
+### `npm test`
 
-```bash
-# npm
-npm run build
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# pnpm
-pnpm run build
+### `npm run build`
 
-# yarn
-yarn build
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# bun
-bun run build
-```
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Locally preview production build:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```bash
-# npm
-npm run preview
+### `npm run eject`
 
-# pnpm
-pnpm run preview
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-# yarn
-yarn preview
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-# bun
-bun run preview
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
