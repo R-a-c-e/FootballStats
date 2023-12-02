@@ -12,8 +12,8 @@ const ports = {
 const pool = new Pool({
 	user: 'postgres',
 	host: 'localhost',
-	database: 'nflstats',
-	password: 'pizza',
+	database: 'football_stats',
+	password: 'password',
 	port: ports.database,
 });
 
@@ -90,7 +90,7 @@ const queries = {
 		JOIN team AS t ON def.dp_team_id=t.t_id 
 		WHERE def.dp_playtype_id=1 and def.dp_year=${year};
 	`),
-	defense_misc: (year) => (`
+	defense_takeaways: (year) => (`
 		SELECT 
 			t.t_name AS team,
 			def.dp_year AS year,
@@ -154,7 +154,7 @@ const queries = {
 		JOIN Kickoff_Return as kr on t.t_id=kr.kr_team_id
 		WHERE k.k_year=${year} and kr.kr_year=${year};
 	`),
-	special_teams_punts: (year) => (`
+	special_teams_punting: (year) => (`
 		SELECT
 			t.t_name AS team,
 			p.p_net_yds AS net_yards,
