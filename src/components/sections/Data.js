@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import StateContext from "../../store/StateContext";
 
+import css from "./Data.module.css";
 import db from "../../components/modules/db";
 
 function Data() {
@@ -15,6 +16,7 @@ function Data() {
 		stateContext.updateData("loading");
 
 		db.get(stateContext).then(data => {
+			data = (data.length > 0 ? data : null);
 			stateContext.updateData(data);
 		});
 	}
@@ -25,7 +27,7 @@ function Data() {
 	}, [stateContext.year, stateContext.side, stateContext.stat]);
 
 	// No data loaded!
-	if (stateContext.data === null ) {
+	if (stateContext.data === null) {
 		return <div />;
 	}
 
@@ -36,10 +38,30 @@ function Data() {
 		);
 	}
 
+	const output = JSON.parse(stateContext.data);
+	const columns = (output.length > 0 ? Object.keys(output[0]) : []);
+
 	// Data is loaded so display it
 	return (
 		<div>
-			{stateContext.data}
+			<table className="styled-table">
+				<thead>
+					<tr className={css["styled-table"]}>
+						{columns.map((column, index) => (
+							<th key={index}>{column}</th>
+						))}
+					</tr>
+				</thead>
+				<tbody className={css["styled-table"]}>
+					{output.map((row, rowIndex) => (
+						<tr key={rowIndex}>
+							{columns.map((column, columnIndex) => (
+							<td key={columnIndex}>{row[column]}</td>
+							))}
+						</tr>
+					))}
+				</tbody>
+			</table>
 		</div>
 	);
 }

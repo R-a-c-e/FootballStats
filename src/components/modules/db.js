@@ -14,7 +14,7 @@ function DB() {
 	const api_endpoint = "http://localhost:3001/api/data";
 
 	function translateToKey(side, stat) {
-		return `${side.toLowerCase()} ${stat.toLowerCase()}`.replace(" ", "_");
+		return `${side.toLowerCase()} ${stat.toLowerCase()}`.replace(/ /g, "_");
 	}
 
 	return {
